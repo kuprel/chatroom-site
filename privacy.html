@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatRoom Privacy Policy</title>
+<style>
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 42em;
+         margin: 3em auto; padding: 0 1.5em; line-height: 1.6; color: #222; }
+  h1, h2 { line-height: 1.25; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #111; color: #ddd; }
+  }
+</style>
+</head>
+<body>
+<h1>ChatRoom Privacy Policy</h1>
+<p><em>Last updated: August 9, 2026</em></p>
+
+<p>ChatRoom is a peer-to-peer video chat app that renders you as a live 3D
+avatar of your real face. This policy describes exactly what data the app
+handles and where it goes. The short version: your data goes to the people in
+your room, end-to-end encrypted, and nowhere else.</p>
+
+<h2>Face data</h2>
+<p>ChatRoom uses the front (TrueDepth) camera to track your face and build a
+texture of it. This face data — imagery, geometry, and expression
+coefficients — is used for exactly one purpose: rendering your avatar to the
+people in your chat room.</p>
+<ul>
+<li>It is transmitted directly to the devices of people in your room,
+end-to-end encrypted. It is never sent to our servers, because our servers
+cannot receive media at all.</li>
+<li>A face capture is stored on your own device so a headset you own can
+display it. You can delete it at any time with “Delete Saved Face Data” in
+the room menu.</li>
+<li>Face data is never used for identification, advertising, analytics, or
+any purpose other than drawing your avatar, and is never shared with third
+parties.</li>
+</ul>
+
+<h2>Voice audio</h2>
+<p>Your microphone audio is compressed and sent end-to-end encrypted,
+directly to the people in your room. It is not recorded or stored anywhere.</p>
+
+<h2>Head pose and movement</h2>
+<p>Head position, rotation, and facial expression coefficients are sent to
+room peers to animate your avatar. They are not stored.</p>
+
+<h2>What our server sees</h2>
+<p>A small signaling server helps devices in a room find each other. It sees
+your IP address and a random per-session peer number — that is all. It never
+receives faces, audio, video, or names. There are no accounts, and we collect
+no analytics.</p>
+
+<h2>Encryption</h2>
+<p>All media between peers is encrypted with keys agreed directly between
+devices (Curve25519 key agreement, ChaCha20-Poly1305 encryption). Keys are
+generated fresh each session and are never known to the server.</p>
+
+<h2>Data retention and deletion</h2>
+<p>The only persistent data is the face capture stored on your own devices
+and your local settings (such as blocked peers). Deleting the app, or using
+“Delete Saved Face Data,” removes the face capture. Nothing about you is
+retained anywhere else, because nothing about you is collected anywhere
+else.</p>
+
+<h2>Children</h2>
+<p>ChatRoom is not directed at children and is rated for users 17 and
+older.</p>
+
+<h2>Contact</h2>
+<p>Questions or concerns: <a href="mailto:brkuprel@gmail.com">brkuprel@gmail.com</a></p>
+</body>
+</html>
