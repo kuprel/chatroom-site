@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ChatRoom Privacy Policy</title>
+<title>3D Chat Room Privacy Policy</title>
 <style>
   body { font-family: -apple-system, system-ui, sans-serif; max-width: 42em;
          margin: 3em auto; padding: 0 1.5em; line-height: 1.6; color: #222; }
@@ -14,56 +14,113 @@
 </style>
 </head>
 <body>
-<h1>ChatRoom Privacy Policy</h1>
-<p><em>Last updated: August 12, 2026</em></p>
+<h1>3D Chat Room Privacy Policy</h1>
+<p><em>Last updated: September 17, 2026</em></p>
+<p>This policy describes the iOS app, including live avatar rooms, optional
+AI voice chat, and safety reports. No account or login is required.</p>
 
-<p>ChatRoom is a peer-to-peer video chat app that renders you as a live 3D
-avatar of your real face. This policy describes exactly what data the app
-handles and where it goes. The short version: your data goes directly to the
-people in your room, and nowhere else.</p>
+<h2 id="face-data-collected">Face data — collection</h2>
+<p>With your consent and camera permission, 3D Chat Room uses ARKit face
+tracking and the front camera, including the TrueDepth camera on supported
+devices. It processes camera images of your face, a three-dimensional face
+mesh, facial-expression blend-shape coefficients, head position and
+rotation, and eye positions and rotations. It derives a face texture,
+face-shape corrections and an average skin color for the avatar. The app
+does not access Face ID authentication templates or use your face to
+identify or authenticate you.</p>
 
-<h2>Face data</h2>
-<p>ChatRoom uses the front (TrueDepth) camera to track your face and build a
-texture of it. This face data — imagery, geometry, and expression
-coefficients — is used for exactly one purpose: rendering your avatar to the
-people in your chat room.</p>
-<ul>
-<li>It is transmitted directly to the devices of people in your room. It is
-never sent to our servers, because our servers cannot receive media at
-all.</li>
-<li>Face data is never written to disk. It exists in memory only while you
-are in a room, and is discarded when you leave.</li>
-<li>Face data is never used for identification, advertising, analytics, or
-any purpose other than drawing your avatar, and is never shared with third
-parties.</li>
-</ul>
+<h2 id="face-data-use">Face data — purposes</h2>
+<p>Face data is used only to draw and animate your live 3D avatar, including
+its appearance, expressions, eyes and head movement, and to adjust the
+viewpoint of the 3D scene. You can see your own avatar in the mirror view.
+There are no other planned uses. We do not use face data for advertising,
+analytics, profiling, identification, or training AI or machine-learning
+models.</p>
 
-<h2>Voice audio</h2>
-<p>Your microphone audio is compressed and sent directly to the people in
-your room. It is not recorded or stored anywhere.</p>
+<h2 id="face-data-sharing">Face data — sharing and disclosure</h2>
+<p>In a room with other people, face textures, face-shape corrections,
+expression coefficients, and head and eye poses are sent directly to the
+other participants' devices to display your avatar. Other participants are
+recipients of your face data. If you explicitly connect your iPhone to the
+Mac companion, your phone sends this data to that Mac, which renders it and
+can forward it to its room participants. In a solo AI room, face data is
+rendered locally and is not sent to xAI.</p>
+<p>The iOS app does not send face data to the developer's signaling or
+moderation server, advertising or analytics services, or AI providers.
+Face data is not included in reports or block notifications. Apart from the
+participants and connected Mac described above, we do not disclose or share
+face data with third parties. Direct peer media is not end-to-end encrypted.
+Other participants may capture what their devices display; the app cannot
+control their separate screenshots or recordings.</p>
 
-<h2>Head pose and movement</h2>
-<p>Head position, rotation, and facial expression coefficients are sent to
-room peers to animate your avatar. They are not stored.</p>
+<h2 id="face-data-retention">Face data — storage, retention and deletion</h2>
+<p>The iOS app does not save captured face data to files, databases, backups,
+or cloud storage. It processes face data in volatile CPU and GPU memory on
+your device and receiving participants' devices. Leaving a room stops
+camera capture and transmission; working buffers, including your most
+recent face texture, can remain in the running app's memory until replaced
+or the app process ends. Closing the app process releases that memory.
+There is no developer-held face-data record to delete. You can stop further
+capture by leaving the room or revoking camera access in iOS Settings.</p>
 
-<h2>What our server sees</h2>
-<p>A small signaling server helps devices in a room find each other. It sees
-your IP address and a random per-session peer number — that is all. It never
-receives faces, audio, video, or names. There are no accounts, and we collect
-no analytics.</p>
+<h2 id="voice-audio">Voice audio and optional AI conversations</h2>
+<p>In rooms with other people, microphone audio is compressed and sent
+directly to their devices for live conversation. The app does not save
+recordings of these calls. Short working audio buffers exist in memory.
+Muting stops live microphone sharing; leaving stops microphone capture.</p>
+<p>If you choose an AI room and accept the separate AI voice disclosure,
+your microphone audio and conversation text are sent to xAI to generate the
+AI companion's replies. Face data is not sent to xAI. The app holds audio
+and conversation text in memory and does not save a conversation history
+to disk. xAI's published API policy describes default retention of inputs
+and outputs for 30 days for abuse auditing, after which they are deleted;
+it says API data is not used for training without explicit permission.
+We do not authorize training on your conversations. See
+<a href="https://docs.x.ai/developers/faq/security">xAI API data practices</a>
+and <a href="https://x.ai/legal/privacy-policy">xAI's privacy policy</a>.
+Declining AI sharing leaves rooms with people available.</p>
 
-<h2>Data retention and deletion</h2>
-<p>The only persistent data on your device is local settings, such as blocked
-peers and appearance choices. Face data, voice, and movement are never
-stored. Deleting the app removes those settings. Nothing about you is
-retained anywhere else, because nothing about you is collected anywhere
-else.</p>
+<h2 id="connection-data">Connection data and device identifiers</h2>
+<p>The signaling server receives network addresses, port numbers, room
+selection and peer connection information so participants can connect
+directly. It does not relay room media. The app creates a random installation
+identifier so blocks continue to apply across app launches. This is not
+derived from your face and is not an advertising identifier. It is shared
+with room participants and the signaling server, and accompanies safety
+reports. Signaling room state is held in memory; server connection logs
+may contain network addresses and room events.</p>
 
-<h2>Children</h2>
-<p>ChatRoom is not directed at children and is rated for users 17 and
-older.</p>
+<h2 id="safety-reports">Safety reports and block notifications</h2>
+<p>Reporting content or blocking a participant sends the action, reported
+participant's and reporting installation's identifiers, room, time, app
+version, selected reason, and any description you enter to the developer.
+No face imagery, face-tracking measurements or audio is attached. Please
+do not include private information in the description.</p>
+<p>Reports are sent over HTTPS, stored on the developer's server for up to
+90 days, and emailed to brkuprel@gmail.com for review. The hosting and email
+delivery providers process report metadata to provide these services.
+Notification emails are retained until the safety review and any related
+follow-up are complete, then deleted, unless retention is required by law.
+Pending reports are stored on your device and retried until delivery is
+confirmed; the local pending copy is then removed. Deleting the app removes
+unsent reports. Contact the developer to request deletion of a submitted
+report. Participant identifiers on a service exclusion list are kept while
+the exclusion remains in effect.</p>
 
-<h2>Contact</h2>
-<p>Questions or concerns: <a href="mailto:brkuprel@gmail.com">brkuprel@gmail.com</a></p>
+<h2 id="local-settings">Local settings and your choices</h2>
+<p>Your device stores terms and privacy consent, AI voice consent, the
+random installation identifier, blocked identifiers, appearance settings,
+and unsent safety reports. These are separate from face data. You can undo
+local blocks from the lobby. Deleting the app removes its local data;
+restoring a device backup may restore local settings. To request deletion
+of developer-held report data, contact the address below. No advertising
+or cross-app tracking is used.</p>
+
+<h2 id="children">Children</h2>
+<p>3D Chat Room is intended for people aged 17 and older.</p>
+
+<h2 id="contact">Contact</h2>
+<p>Privacy questions, safety concerns, or deletion requests:
+<a href="mailto:brkuprel@gmail.com">brkuprel@gmail.com</a>.</p>
 </body>
 </html>
