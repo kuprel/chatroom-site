@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1>3D Chat Room Privacy Policy</h1>
-<p><em>Last updated: September 21, 2026</em></p>
+<p><em>Last updated: September 25, 2026</em></p>
 <p>This policy describes the iOS app, including live avatar rooms, optional
 AI voice chat, and safety reports. No account or login is required.</p>
 
@@ -40,7 +40,7 @@ models.</p>
 <h2 id="face-data-sharing">Face data — sharing and disclosure</h2>
 <p>In a room with other people, face textures, face-shape corrections,
 expression coefficients, and head and eye poses are sent directly to the
-other participants' devices to display your avatar. Other participants are
+participants you allow to display your avatar. Other participants are
 recipients of your face data. If you explicitly connect your iPhone to the
 Mac companion, your phone sends this data to that Mac, which renders it and
 can forward it to its room participants. In a solo AI room, face data is
@@ -65,7 +65,7 @@ capture by leaving the room or revoking camera access in iOS Settings.</p>
 
 <h2 id="voice-audio">Voice audio and optional AI conversations</h2>
 <p>In rooms with other people, microphone audio is compressed and sent
-directly to their devices for live conversation. The app does not save
+directly to participants you allow for live conversation. The app does not save
 recordings of these calls. Short working audio buffers exist in memory.
 Muting stops live microphone sharing; leaving stops microphone capture.</p>
 <p>If you choose an AI room and accept the separate AI voice disclosure,
@@ -98,9 +98,12 @@ No face imagery, face-tracking measurements or audio is attached. Please
 do not include private information in the description.</p>
 <p>Reports are sent over HTTPS to a Google Apps Script operated by the
 developer and emailed to brkuprel@gmail.com for review. Google processes
-report metadata to host the receiver and deliver email. Unsent reports are
-stored in the script's private storage for up to 30 days and removed after
-successful notification. Limited report identifiers, content hashes and
+report metadata to host the receiver and deliver email. Unsent notification payloads are stored in the script's private storage
+for up to 30 days and removed after successful notification. A separate
+private review record contains the report ID, reported installation ID,
+room, reason, receipt time, 24-hour deadline, decision and review note.
+Open review records remain until resolved; resolved records are deleted
+within 30 days, or sooner when storage space is needed. Limited report identifiers, content hashes and
 delivery timestamps are retained for up to 30 days to prevent duplicate
 notifications. Delivery may be delayed by service outages or email limits.
 Notification emails are retained until the safety review and any related
@@ -110,6 +113,19 @@ confirmed; the local pending copy is then removed. Deleting the app removes
 unsent reports. Contact the developer to request deletion of a submitted
 report. See <a href="https://policies.google.com/privacy">Google's privacy
 policy</a> for its service data practices.</p>
+
+<h2 id="moderation-enforcement">Moderation enforcement</h2>
+<p>The app fetches current moderation policy over HTTPS on entering a human
+room and every minute while there. The policy exposes only banned installation
+identifiers and whether rooms are enabled; it does not expose reports,
+reporter identifiers, allegations or review notes. Google receives the network
+request, but the app does not include your installation ID in this policy
+request. Banned identifiers are kept for as long as the ban is in force so
+clients can remove offending live content and reject further contact.</p>
+<p>Participant approvals and temporary hides last for the current room visit.
+New participants' media is withheld until you explicitly allow it. No audio
+transcription, image classifier, or third-party media-analysis service is used
+for this filter. A report or block does not upload any live media.</p>
 
 <h2 id="local-settings">Local settings and your choices</h2>
 <p>Your device stores terms and privacy consent, AI voice consent, the
@@ -121,7 +137,7 @@ of developer-held report data, contact the address below. No advertising
 or cross-app tracking is used.</p>
 
 <h2 id="children">Children</h2>
-<p>3D Chat Room is intended for people aged 17 and older.</p>
+<p>3D Chat Room is intended for people aged 18 and older.</p>
 
 <h2 id="contact">Contact</h2>
 <p>Privacy questions, safety concerns, or deletion requests:
