@@ -15,9 +15,26 @@
 </head>
 <body>
 <h1>3D Chat Room Privacy Policy</h1>
-<p><em>Last updated: September 25, 2026</em></p>
-<p>This policy describes the iOS app, including live avatar rooms, optional
-AI voice chat, and safety reports. No account or login is required.</p>
+<p><em>Last updated: September 29, 2026</em></p>
+<p>This policy describes version 1.0 (build 148 and later): private rooms,
+optional AI conversations, and safety tools. Human rooms require an email-verified
+account and a private invitation. Eve is an AI companion and also requires sign-in for protected access to the voice service. The changes take effect with this replacement release.</p>
+
+<h2 id="accounts">Accounts and private invitations</h2>
+<p>We use your email address to send a single-use sign-in code and maintain an
+account. Google Apps Script processes the address, code request and account record.
+Codes expire after 10 minutes. Session credentials expire after seven days and are
+stored in the device-only Keychain. Your email is not disclosed to room members;
+they see a stable member label. The service links installation identifiers to the
+verified account to enforce blocks and bans across devices.</p>
+<p>Private invitations are unguessable codes shared by the host, expire after one
+hour, and can be revoked. Membership records and connection details expire with
+the room within 24 hours; active connection details are discarded after inactivity.
+Rooms admit at most four verified accounts. There is no public room directory.</p>
+<p>Use Delete Account in the lobby to delete your email, profile and sign-in sessions
+and close rooms you host. We retain minimal pseudonymous identifier links needed
+to resolve safety reports and enforce bans. Recreating a banned account does not
+remove its ban. Contact us for privacy requests or an appeal.</p>
 
 <h2 id="face-data-collected">Face data — collection</h2>
 <p>With your consent and camera permission, 3D Chat Room uses ARKit face
@@ -38,20 +55,19 @@ analytics, profiling, identification, or training AI or machine-learning
 models.</p>
 
 <h2 id="face-data-sharing">Face data — sharing and disclosure</h2>
-<p>In a room with other people, face textures, face-shape corrections,
-expression coefficients, and head and eye poses are sent directly to the
-participants you allow to display your avatar. Other participants are
-recipients of your face data. If you explicitly connect your iPhone to the
-Mac companion, your phone sends this data to that Mac, which renders it and
-can forward it to its room participants. In a solo AI room, face data is
-rendered locally and is not sent to xAI.</p>
-<p>The iOS app does not send face data to the developer's signaling or
-moderation server, advertising or analytics services, or AI providers.
-Face data is not included in reports or block notifications. Apart from the
-participants and connected Mac described above, we do not disclose or share
-face data with third parties. Direct peer media is not end-to-end encrypted.
-Other participants may capture what their devices display; the app cannot
-control their separate screenshots or recordings.</p>
+<p>In private rooms, expression coefficients, head and eye poses, and view
+parameters are sent to participants you allow to animate built-in avatar artwork.
+Camera imagery, captured face textures, custom face-shape corrections and face
+meshes are not transmitted to other human participants. Face imagery can be used
+locally in your own mirror view.</p>
+<p>If you explicitly connect an iPhone to the Mac companion, face data is sent to
+that Mac for rendering. The current companion applies the same private-room
+restrictions. Face data is not sent to the developer's account/moderation service,
+Google, xAI, advertising services or analytics services. Face data is not included
+in safety reports. In Eve's room, your face data is rendered locally.</p>
+<p>Private-room packets use encryption with pair-specific keys provided by the
+membership service. Other participants can separately capture what their devices
+display or play; the app cannot control their screenshots or recordings.</p>
 
 <h2 id="face-data-retention">Face data — storage, retention and deletion</h2>
 <p>The iOS app does not save captured face data to files, databases, backups,
@@ -64,10 +80,24 @@ There is no developer-held face-data record to delete. You can stop further
 capture by leaving the room or revoking camera access in iOS Settings.</p>
 
 <h2 id="voice-audio">Voice audio and optional AI conversations</h2>
-<p>In rooms with other people, microphone audio is compressed and sent
-directly to participants you allow for live conversation. The app does not save
-recordings of these calls. Short working audio buffers exist in memory.
-Muting stops live microphone sharing; leaving stops microphone capture.</p>
+<p>In human rooms, voice is sent as deliberate messages of up to five seconds,
+not as an unfiltered live microphone stream. Before joining, you separately consent
+to voice safety processing. Each message is sent over HTTPS through the developer's
+Google Apps Script to xAI for transcription and content classification. Rejected
+messages, unavailable checks and ambiguous results are not delivered. Recipients
+verify a receipt bound to the exact audio bytes before playing a message received
+directly from another member.</p>
+<p>The developer's service processes audio in memory and does not store recordings.
+An approval record containing a transcript, audio digest, sender identifier and room
+identifier expires after two minutes. Devices hold audio and recent transcripts in
+memory for the room visit. Remove Message Immediately stops playback and removes a
+message from your view; Hide Content Immediately removes that participant's messages
+and avatar. Leaving clears the room's audio/transcript buffers. Withdrawal of voice
+safety consent is available in the lobby; human voice requires consent again.</p>
+<p>xAI also processes human-room audio and transcripts under its API data practices,
+including its published default retention of up to 30 days for abuse monitoring.
+Google and xAI receive the network requests needed to provide their services.
+Face data is not included. We do not authorize model training on this content.</p>
 <p>If you choose an AI room and accept the separate AI voice disclosure,
 your microphone audio and conversation text are sent to xAI to generate the
 AI companion's replies. Face data is not sent to xAI. The app holds audio
@@ -78,23 +108,29 @@ it says API data is not used for training without explicit permission.
 We do not authorize training on your conversations. See
 <a href="https://docs.x.ai/developers/faq/security">xAI API data practices</a>
 and <a href="https://x.ai/legal/privacy-policy">xAI's privacy policy</a>.
-Declining AI sharing leaves rooms with people available.</p>
+Declining AI companion sharing leaves private human rooms available with their separate voice-safety consent. You can withdraw
+AI voice consent at any time with Stop Sharing Voice with xAI in the lobby;
+no further audio or conversation text is sent to xAI unless you agree again.</p>
 
 <h2 id="connection-data">Connection data and device identifiers</h2>
-<p>The signaling server receives network addresses, port numbers, room
-selection and peer connection information so participants can connect
-directly. It does not relay room media. The app creates a random installation
-identifier so blocks continue to apply across app launches. This is not
-derived from your face and is not an advertising identifier. It is shared
-with room participants and the signaling server, and accompanies safety
-reports. Signaling room state is held in memory; server connection logs
-may contain network addresses and room events.</p>
+<p>The Google-hosted membership service receives room membership, installation
+identifiers, network addresses, port numbers and connection information so invited
+members can connect. Active clients refresh membership every three seconds and stop
+exchanging media when membership cannot be refreshed for 20 seconds. The service
+does not relay avatar animation. Cloudflare's STUN service receives your network
+address and port to help establish direct connections; it does not receive room
+media. There is no paid media relay in this release, so some restrictive networks
+may prevent a connection.</p>
+<p>The installation identifier is random, not derived from your face and not an
+advertising identifier. It accompanies reports and is linked to your verified
+account for safety enforcement. Google and Cloudflare may maintain operational
+request logs under their own policies.</p>
 
 <h2 id="safety-reports">Safety reports and block notifications</h2>
 <p>Reporting content or blocking a participant sends the action, reported
 participant's and reporting installation's identifiers, room, time, app
 version, selected reason, and any description you enter to the developer.
-No face imagery, face-tracking measurements or audio is attached. Please
+Report Message includes the displayed transcript and message identifier. No face imagery, face-tracking measurements or audio recording is attached. Please
 do not include private information in the description.</p>
 <p>Reports are sent over HTTPS to a Google Apps Script operated by the
 developer and emailed to brkuprel@gmail.com for review. Google processes
@@ -120,21 +156,25 @@ room and every minute while there. The policy exposes only banned installation
 identifiers and whether rooms are enabled; it does not expose reports,
 reporter identifiers, allegations or review notes. Google receives the network
 request, but the app does not include your installation ID in this policy
-request. Banned identifiers are kept for as long as the ban is in force so
-clients can remove offending live content and reject further contact.</p>
+request. Banned account and installation identifiers are kept for as long as the ban is in force so clients can remove content and reject further contact, including after reinstall or account recreation.</p>
 <p>Participant approvals and temporary hides last for the current room visit.
-New participants' media is withheld until you explicitly allow it. No audio
-transcription, image classifier, or third-party media-analysis service is used
-for this filter. A report or block does not upload any live media.</p>
+New participants' content is withheld until you explicitly allow it. Voice is additionally transcribed and classified by xAI before sharing. Human rooms use built-in avatar artwork instead of transmitting captured images. Reports can include a displayed transcript but do not upload audio or face media.</p>
 
 <h2 id="local-settings">Local settings and your choices</h2>
 <p>Your device stores terms and privacy consent, AI voice consent, the
-random installation identifier, blocked identifiers, appearance settings,
-and unsent safety reports. These are separate from face data. You can undo
-local blocks from the lobby. Deleting the app removes its local data;
+random installation identifier, blocked identifiers, voice-safety consent, appearance settings,
+and unsent safety reports. These are separate from face data. You can undo blocks, withdraw AI voice and human voice-safety consent, sign out, or delete your account from the lobby. Deleting the app removes its local data;
 restoring a device backup may restore local settings. To request deletion
 of developer-held report data, contact the address below. No advertising
 or cross-app tracking is used.</p>
+
+<h2 id="prior-builds">Earlier builds</h2>
+<p>Builds before 148 used public rooms and could send face textures and custom face
+geometry directly to other participants. Those builds did not have verified
+accounts, private invitations or pre-delivery voice checks. The
+<a href="privacy-2026-09-25.html">September 25 privacy policy</a> remains available
+for those builds. The older face-data handling and safety-report retention apply
+to activity that occurred in them.</p>
 
 <h2 id="children">Children</h2>
 <p>3D Chat Room is intended for people aged 18 and older.</p>
