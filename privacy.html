@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1>3D Chat Room Privacy Policy</h1>
-<p><em>Last updated: October 8, 2026</em></p>
+<p><em>Last updated: October 9, 2026</em></p>
 <p>This policy describes rooms,
 optional AI conversations, and safety tools. The updated app uses Sign in with Apple for human rooms and requires a private invitation. Eve is an AI companion with a one-time five-minute preview without an account. Sign in with Apple to continue after the preview. Rooms last up to one hour per session. The preview and one-hour limit take effect with the next app update.</p>
 
@@ -88,24 +88,16 @@ There is no developer-held face-data record to delete. You can stop further
 capture by leaving the room or revoking camera access in iOS Settings.</p>
 
 <h2 id="voice-audio">Voice audio and optional AI conversations</h2>
-<p>In human rooms, voice is sent as deliberate messages of up to five seconds,
-not as an unfiltered live microphone stream. Before joining, you separately consent
-to voice safety processing. Each message is sent over HTTPS through the developer's
-Google Apps Script to xAI for transcription and content classification. Rejected
-messages, unavailable checks and ambiguous results are not delivered. Recipients
-verify a receipt bound to the exact audio bytes before playing a message received
-directly from another member.</p>
-<p>The developer's service processes audio in memory and does not store recordings.
-An approval record containing a transcript, audio digest, sender identifier and room
-identifier expires after two minutes. Devices hold audio and recent transcripts in
-memory for the room visit. Remove Message Immediately stops playback and removes a
-message from your view; Hide Content Immediately removes that participant's messages
-and avatar. Leaving clears the room's audio/transcript buffers. Withdrawal of voice
-safety consent is available in the lobby; human voice requires consent again.</p>
-<p>xAI also processes human-room audio and transcripts under its API data practices,
-including its published default retention of up to 30 days for abuse monitoring.
-Google and xAI receive the network requests needed to provide their services.
-Face data is not included. We do not authorize model training on this content.</p>
+<p>In rooms with friends, live microphone audio is encrypted and sent directly
+between the participants who allow each other. Friend audio is not uploaded to
+Google or xAI, transcribed, classified by an AI service, or saved as recordings by
+the app or developer. Devices temporarily buffer audio in memory for live playback.
+Use the microphone button to mute yourself; Hide, Report, Block or leaving the room
+stops that participant's audio and further sharing.</p>
+<p>The Google-hosted service handles sign-in, invitations, membership, connection
+information and safety-report metadata; it does not relay friend audio. Automatic
+voice transcription and content classification are not used in friend rooms.
+New participants remain hidden and muted until both people allow each other.</p>
 <p>If you choose an AI room and accept the separate AI voice disclosure,
 your microphone audio, conversation text and game context (such as chess moves
 and game results) are sent to xAI to generate the AI companion's replies.
@@ -122,8 +114,8 @@ it says API data is not used for training without explicit permission.
 We do not authorize training on your conversations. See
 <a href="https://docs.x.ai/developers/faq/security">xAI API data practices</a>
 and <a href="https://x.ai/legal/privacy-policy">xAI's privacy policy</a>.
-Declining AI companion sharing leaves private human rooms available with their separate voice-safety consent. You can withdraw
-AI voice consent at any time with Stop Sharing Voice with xAI in the lobby;
+Declining AI companion sharing leaves rooms with friends available without sending their audio to xAI. You can withdraw
+AI voice consent at any time with Stop Sharing AI Voice with xAI in Account;
 no further audio or conversation text is sent to xAI unless you agree again.</p>
 
 <h2 id="connection-data">Connection data and device identifiers</h2>
@@ -131,7 +123,7 @@ no further audio or conversation text is sent to xAI unless you agree again.</p>
 identifiers, network addresses, port numbers and connection information so invited
 members can connect. Active clients refresh membership every three seconds and stop
 exchanging media when membership cannot be refreshed for 20 seconds. The service
-does not relay avatar animation. Cloudflare's STUN service receives your network
+does not relay friend audio or avatar animation. Cloudflare's STUN service receives your network
 address and port to help establish direct connections; it does not receive room
 media. There is no paid media relay in this release, so some restrictive networks
 may prevent a connection.</p>
@@ -144,7 +136,7 @@ request logs under their own policies.</p>
 <p>Reporting content or blocking a participant sends the action, reported
 participant's and reporting installation's identifiers, room, time, app
 version, selected reason, and any description you enter to the developer.
-Report Message includes the displayed transcript and message identifier. No face imagery, face-tracking measurements or audio recording is attached. Please
+No face imagery, face-tracking measurements, automatically generated transcript or audio recording is attached. Please
 do not include private information in the description.</p>
 <p>Reports are sent over HTTPS to a Google Apps Script operated by the
 developer and emailed to brkuprel@gmail.com for review. Google processes
@@ -172,22 +164,27 @@ reporter identifiers, allegations or review notes. Google receives the network
 request, but the app does not include your installation ID in this policy
 request. Banned account and installation identifiers are kept for as long as the ban is in force so clients can remove content and reject further contact, including after reinstall or account recreation.</p>
 <p>Participant approvals and temporary hides last for the current room visit.
-New participants' content is withheld until you explicitly allow it. Voice is additionally transcribed and classified by xAI before sharing. Human rooms use built-in avatar artwork instead of transmitting captured images. Reports can include a displayed transcript but do not upload audio or face media.</p>
+New participants' content is withheld until you explicitly allow it. Human rooms use built-in avatar artwork instead of transmitting captured images and direct encrypted voice chat without cloud transcription. Reports include the description you provide and do not upload audio or face media.</p>
 
 <h2 id="local-settings">Local settings and your choices</h2>
 <p>Your device stores terms and privacy consent, AI voice consent, the
-random installation identifier, blocked identifiers, voice-safety consent, appearance settings,
+random installation identifier, blocked identifiers, appearance settings,
 and unsent safety reports. Your shortened Apple sign-in name, any name you edit in
 Account and an optional photo you choose are stored on this device for your Apple
 account. They are not sent to our services or
 other participants; deleting your account removes them from this device.
 Its device-only Keychain stores sign-in credentials and
-the random Eve preview identifier. These are separate from face data. You can undo blocks, withdraw AI voice and human voice-safety consent, sign out, or delete your account from Account in the lobby. Deleting the app removes its local app settings; Keychain items may remain on the device, so reinstalling does not grant another preview;
+the random Eve preview identifier. These are separate from face data. You can undo blocks, withdraw AI voice consent, sign out, or delete your account from Account in the lobby. Deleting the app removes its local app settings; Keychain items may remain on the device, so reinstalling does not grant another preview;
 restoring a device backup may restore local settings. To request deletion
 of developer-held report data, contact the address below. No advertising
 or cross-app tracking is used.</p>
 
 <h2 id="prior-builds">Earlier builds</h2>
+<p>Earlier invitation-room builds uploaded short voice messages through Google to
+xAI for transcription and safety checking. That upload route is disabled with this
+update, so those builds must update to use friend voice chat. Audio previously sent
+to a provider remains subject to that provider's retention policy; disabling this
+route does not erase previously submitted data.</p>
 <p>Builds before 148 used public rooms and could send face textures and custom face
 geometry directly to other participants. Those builds did not have verified
 accounts, private invitations or pre-delivery voice checks. The
