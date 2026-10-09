@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Join ChatRoom</title>
+<style>
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 28em;
+         margin: 4em auto; padding: 0 1.5em; line-height: 1.6; color: #222; }
+  a { color: #1675d1; }
+  @media (prefers-color-scheme: dark) { body { background: #111; color: #ddd; } }
+</style>
+</head>
+<body>
+<h1>ChatRoom</h1>
+<p id="status">Get ChatRoom, then tap your friend’s invitation again to join.</p>
+<p><a id="download" href="https://apps.apple.com/app/id1626748939">Get ChatRoom</a></p>
+<script>
+  const invitation = new URL(window.location.href);
+  const code = invitation.searchParams.get('invite');
+  const valid = !invitation.hash && /^[0-9a-f]{32}$/i.test(code || '') &&
+    invitation.search === '?invite=' + code;
+  if (valid) {
+    window.location.replace('https://apps.apple.com/app/id1626748939');
+  } else {
+    document.getElementById('status').textContent = 'Ask your friend for a new invitation link.';
+    document.getElementById('download').hidden = true;
+  }
+</script>
+</body>
+</html>

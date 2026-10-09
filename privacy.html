@@ -15,23 +15,28 @@
 </head>
 <body>
 <h1>3D Chat Room Privacy Policy</h1>
-<p><em>Last updated: September 29, 2026</em></p>
-<p>This policy describes version 1.0 (build 148 and later): private rooms,
-optional AI conversations, and safety tools. Human rooms require an email-verified
-account and a private invitation. Eve is an AI companion and also requires sign-in for protected access to the voice service. The changes take effect with this replacement release.</p>
+<p><em>Last updated: October 8, 2026</em></p>
+<p>This policy describes rooms,
+optional AI conversations, and safety tools. The updated app uses Sign in with Apple for human rooms and requires a private invitation. Eve is an AI companion with a one-time five-minute preview without an account. Sign in with Apple to continue after the preview. Rooms last up to one hour per session. The preview and one-hour limit take effect with the next app update.</p>
 
 <h2 id="accounts">Accounts and private invitations</h2>
-<p>We use your email address to send a single-use sign-in code and maintain an
-account. Google Apps Script processes the address, code request and account record.
-Codes expire after 10 minutes. Session credentials expire after seven days and are
-stored in the device-only Keychain. Your email is not disclosed to room members;
-they see a stable member label. The service links installation identifiers to the
-verified account to enforce blocks and bans across devices.</p>
+<p>The updated app uses Sign in with Apple without requesting your name or email.
+Apple authenticates you and provides an app-specific identifier and authorization
+code. Our Google Apps Script service exchanges the code directly with Apple,
+validates the response and stores the identifier and a refresh token to keep you
+signed in and detect revoked access. Tokens are never shared with room members.
+The app stores its session credential in the device-only Keychain. Sessions last
+up to 90 days of inactivity and are renewed during use; Apple access is checked
+at most once per day and the app checks Apple's credential state on return.
+Members see a stable member label. Installation identifiers link to the account
+to enforce blocks and bans across devices. Existing email accounts can migrate
+on an authenticated device; their stored email is removed when migration succeeds.
+Earlier app releases retain their expiring email-code sign-in for compatibility.</p>
 <p>Private invitations are unguessable codes shared by the host, expire after one
 hour, and can be revoked. Membership records and connection details expire with
 the room within 24 hours; active connection details are discarded after inactivity.
 Rooms admit at most four verified accounts. There is no public room directory.</p>
-<p>Use Delete Account in the lobby to delete your email, profile and sign-in sessions
+<p>Use Account → Delete Account in the lobby to revoke Apple sign-in access and delete your profile and sign-in sessions
 and close rooms you host. We retain minimal pseudonymous identifier links needed
 to resolve safety reports and enforce bans. Recreating a banned account does not
 remove its ban. Contact us for privacy requests or an appeal.</p>
@@ -55,17 +60,17 @@ analytics, profiling, identification, or training AI or machine-learning
 models.</p>
 
 <h2 id="face-data-sharing">Face data — sharing and disclosure</h2>
-<p>In private rooms, expression coefficients, head and eye poses, and view
+<p>In rooms, expression coefficients, head and eye poses, and view
 parameters are sent to participants you allow to animate built-in avatar artwork.
 Camera imagery, captured face textures, custom face-shape corrections and face
 meshes are not transmitted to other human participants. Face imagery can be used
 locally in your own mirror view.</p>
 <p>If you explicitly connect an iPhone to the Mac companion, face data is sent to
-that Mac for rendering. The current companion applies the same private-room
+that Mac for rendering. The current companion applies the same room
 restrictions. Face data is not sent to the developer's account/moderation service,
 Google, xAI, advertising services or analytics services. Face data is not included
 in safety reports. In Eve's room, your face data is rendered locally.</p>
-<p>Private-room packets use encryption with pair-specific keys provided by the
+<p>Room packets use encryption with pair-specific keys provided by the
 membership service. Other participants can separately capture what their devices
 display or play; the app cannot control their screenshots or recordings.</p>
 
@@ -101,6 +106,11 @@ Face data is not included. We do not authorize model training on this content.</
 <p>If you choose an AI room and accept the separate AI voice disclosure,
 your microphone audio, conversation text and game context (such as chess moves
 and game results) are sent to xAI to generate the AI companion's replies.
+The initial five-minute preview does not collect an email address. A random,
+device-only Keychain identifier identifies the preview. The Google-hosted service
+stores a hash of this identifier, elapsed preview time and an active-session
+identifier to enforce the one-time allowance across reconnects. It issues
+short-lived xAI connection tokens; the provider's master key stays on the service.
 Face data is not sent to xAI. The app holds audio
 and conversation text in memory and does not save a conversation history
 to disk. xAI's published API policy describes default retention of inputs
@@ -164,7 +174,8 @@ New participants' content is withheld until you explicitly allow it. Voice is ad
 <h2 id="local-settings">Local settings and your choices</h2>
 <p>Your device stores terms and privacy consent, AI voice consent, the
 random installation identifier, blocked identifiers, voice-safety consent, appearance settings,
-and unsent safety reports. These are separate from face data. You can undo blocks, withdraw AI voice and human voice-safety consent, sign out, or delete your account from the lobby. Deleting the app removes its local data;
+and unsent safety reports. Its device-only Keychain stores sign-in credentials and
+the random Eve preview identifier. These are separate from face data. You can undo blocks, withdraw AI voice and human voice-safety consent, sign out, or delete your account from Account in the lobby. Deleting the app removes its local app settings; Keychain items may remain on the device, so reinstalling does not grant another preview;
 restoring a device backup may restore local settings. To request deletion
 of developer-held report data, contact the address below. No advertising
 or cross-app tracking is used.</p>
