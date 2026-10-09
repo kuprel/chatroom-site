@@ -20,7 +20,10 @@
 optional AI conversations, and safety tools. The updated app uses Sign in with Apple for human rooms and requires a private invitation. Eve is an AI companion with a one-time five-minute preview without an account. Sign in with Apple to continue after the preview. Rooms last up to one hour per session. The preview and one-hour limit take effect with the next app update.</p>
 
 <h2 id="accounts">Accounts and private invitations</h2>
-<p>The updated app uses Sign in with Apple without requesting your name or email.
+<p>The updated app uses Sign in with Apple and requests your name, without requesting
+your email. When Apple provides your name, the app saves only your first name and
+last initial on this device for the profile button. This name is not sent to our
+services or other participants. You can edit it in Account.
 Apple authenticates you and provides an app-specific identifier and authorization
 code. Our Google Apps Script service exchanges the code directly with Apple,
 validates the response and stores the identifier and a refresh token to keep you
@@ -174,8 +177,9 @@ New participants' content is withheld until you explicitly allow it. Voice is ad
 <h2 id="local-settings">Local settings and your choices</h2>
 <p>Your device stores terms and privacy consent, AI voice consent, the
 random installation identifier, blocked identifiers, voice-safety consent, appearance settings,
-and unsent safety reports. An optional username and photo you choose in Account are
-stored on this device for your Apple account. They are not sent to our services or
+and unsent safety reports. Your shortened Apple sign-in name, any name you edit in
+Account and an optional photo you choose are stored on this device for your Apple
+account. They are not sent to our services or
 other participants; deleting your account removes them from this device.
 Its device-only Keychain stores sign-in credentials and
 the random Eve preview identifier. These are separate from face data. You can undo blocks, withdraw AI voice and human voice-safety consent, sign out, or delete your account from Account in the lobby. Deleting the app removes its local app settings; Keychain items may remain on the device, so reinstalling does not grant another preview;
