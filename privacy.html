@@ -15,9 +15,9 @@
 </head>
 <body>
 <h1>3D Chat Room Privacy Policy</h1>
-<p><em>Last updated: October 9, 2026</em></p>
+<p><em>Last updated: October 10, 2026</em></p>
 <p>This policy describes rooms,
-optional AI conversations, and safety tools. The updated app uses Sign in with Apple for human rooms and requires a private invitation. Eve is an AI companion with a one-time five-minute preview without an account. Sign in with Apple to continue after the preview. Rooms last up to one hour per session. The preview and one-hour limit take effect with the next app update.</p>
+optional AI conversations, and safety tools. The updated app uses Sign in with Apple for human rooms and requires a private invitation. Eve is an AI companion: each device includes 5 free minutes without an account, and optional Eve Plus and Eve Pro subscriptions add monthly time. Rooms last up to one hour per session. These changes take effect with the next app update.</p>
 
 <h2 id="accounts">Accounts and private invitations</h2>
 <p>The updated app uses Sign in with Apple and requests your name, without requesting
@@ -103,14 +103,20 @@ New participants remain hidden and muted until both people allow each other.</p>
 <p>If you choose an AI room and accept the separate AI voice disclosure,
 your microphone audio, conversation text and game context (such as chess moves
 and game results) are sent to xAI to generate the AI companion's replies.
-The initial five-minute preview does not collect an email address. A random,
-device-only Keychain identifier identifies the preview. The Google-hosted service
-stores a hash of this identifier, elapsed preview time and an active-session
-identifier to enforce the one-time allowance across reconnects. It issues
+Eve does not require an account or collect an email address. A random,
+device-only Keychain identifier identifies the device's Eve time. The Google-hosted
+service stores a hash of this identifier, the free time used and an active-session
+identifier to enforce the five free minutes across reconnects and reinstalls. While
+Eve is connected the app reports usage every minute. The service issues
 short-lived xAI connection tokens; the provider's master key stays on the service.
+Subscription records are described under <a href="#subscriptions">Eve subscriptions</a>.
 Face data is not sent to xAI. The app holds audio
 and conversation text in memory and does not save a conversation history
-to disk. xAI's published API policy describes default retention of inputs
+to disk. Eve keeps a short memory on your device: what she calls you, brief notes
+she saved from your conversations, how many times and when you last talked, and a favorite
+world theme. These notes are stored only on your device and are sent to xAI as part of
+Eve's instructions each time you talk to her. Erase them with Account → Eve's memory →
+Forget Everything; deleting the app also removes them. xAI's published API policy describes default retention of inputs
 and outputs for 30 days for abuse auditing, after which they are deleted;
 it says API data is not used for training without explicit permission.
 We do not authorize training on your conversations. See
@@ -119,6 +125,24 @@ and <a href="https://x.ai/legal/privacy-policy">xAI's privacy policy</a>.
 Declining AI companion sharing leaves rooms with friends available without sending their audio to xAI. You can withdraw
 AI voice consent at any time with Stop Sharing AI Voice with xAI in Account;
 no further audio or conversation text is sent to xAI unless you agree again.</p>
+
+<h2 id="subscriptions">Eve subscriptions and purchases</h2>
+<p>Eve Plus and Eve Pro are purchased through Apple. Apple processes payment; we do
+not receive your payment details, Apple Account email or name from a purchase. To
+verify a subscription and meter its time, the app sends the service the signed
+StoreKit transaction for your active Eve subscription. It contains Apple's
+transaction identifiers, the product, price and currency, purchase and expiration
+dates, the app's bundle identifier, storefront and environment. The service verifies Apple's signature and
+stores a hash of the original transaction identifier, the plan, the current billing
+period's start and end, the seconds of Eve used in that period, and the active session
+identifier with its last heartbeat time. It does not store the signed transaction.
+While a session is active it is linked to the hashed device identifier above, so one
+device talks to Eve per subscription at a time. Subscription usage records are deleted
+one day after their billing period ends; a renewal starts a new record. Free-time
+records for a device identifier are kept to prevent repeat free minutes. This
+information is used only to provide Eve and is not used for advertising or tracking.
+Manage or cancel subscriptions in your Apple Account settings; Apple's privacy policy
+covers its payment processing.</p>
 
 <h2 id="connection-data">Connection data and device identifiers</h2>
 <p>The Google-hosted membership service receives room membership, installation
@@ -176,7 +200,8 @@ Account and an optional photo you choose are stored on this device for your Appl
 account. They are not sent to our services or
 other participants; deleting your account removes them from this device.
 Its device-only Keychain stores sign-in credentials and
-the random Eve preview identifier. These are separate from face data. You can undo blocks, withdraw AI voice consent, sign out, or delete your account from Account in the lobby. Deleting the app removes its local app settings; Keychain items may remain on the device, so reinstalling does not grant another preview;
+the random Eve device identifier. The device also keeps Eve's memory notes and the
+last Eve plan and time reported by the service. These are separate from face data. You can undo blocks, withdraw AI voice consent, erase Eve's memory, restore or manage subscriptions, sign out, or delete your account from Account in the lobby. Deleting the app removes its local app settings; Keychain items may remain on the device, so reinstalling does not grant more free Eve minutes;
 restoring a device backup may restore local settings. To request deletion
 of developer-held report data, contact the address below. No advertising
 or cross-app tracking is used.</p>
