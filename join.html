@@ -1,35 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<title>Join ChatRoom</title>
+<meta name="theme-color" content="#080f19">
+<meta name="description" content="A private place to catch up in shared 3D worlds. Start free with one friend for 15 minutes on ChatRoom for iPhone.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ChatRoom">
+<meta property="og:title" content="Your people. Your own world. — ChatRoom">
+<meta property="og:description" content="Private voice. Shared 3D worlds. Start free with one friend for 15 minutes.">
+<meta property="og:url" content="https://kuprel.github.io/chatroom-site/join.html">
+<meta property="og:image" content="https://kuprel.github.io/chatroom-site/invite-preview.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ChatRoom: Your people. Your own world. An illustrated aurora planet with two voice avatars.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Your people. Your own world. — ChatRoom">
+<meta name="twitter:description" content="Private voice. Shared 3D worlds. Start free with one friend for 15 minutes.">
+<meta name="twitter:image" content="https://kuprel.github.io/chatroom-site/invite-preview.png">
+<meta name="twitter:image:alt" content="An illustrated aurora planet with two voice avatars and the ChatRoom name.">
+<link rel="canonical" href="https://kuprel.github.io/chatroom-site/join.html">
+<title>Your invitation to ChatRoom</title>
 <style>
-  body { font-family: -apple-system, system-ui, sans-serif; max-width: 28em;
-         margin: 4em auto; padding: 0 1.5em; line-height: 1.6; color: #222; }
-  a { color: #1675d1; }
-  @media (prefers-color-scheme: dark) { body { background: #111; color: #ddd; } }
+  :root { color-scheme: dark; --text: #f3f6fa; --muted: #aebecb; --mint: #9bf0d0; --line: #ffffff18; }
+  * { box-sizing: border-box; }
+  body { margin: 0; color: var(--text); background: #080f19; font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  body::before { position: fixed; inset: 0; z-index: -1; content: ""; background: radial-gradient(ellipse at 75% 18%, #4a325d42, transparent 55%), radial-gradient(ellipse at 5% 8%, #214b493d, transparent 52%); }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 3px solid var(--mint); outline-offset: 5px; }
+  [hidden] { display: none !important; }
+  .shell { width: min(1080px, calc(100% - 64px)); margin: auto; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 34px 0 20px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 23px; font-weight: 750; letter-spacing: -.65px; }
+  .brand-icon { width: 33px; height: 33px; flex: none; }
+  .private { color: var(--muted); font-size: 13px; display: inline-flex; gap: 7px; align-items: center; }
+  .private svg { width: 14px; height: 14px; }
+  main { padding: 34px 0 28px; }
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 44px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--mint); font-size: 11px; font-weight: 750; letter-spacing: 1.5px; text-transform: uppercase; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 14px #9bf0d04d; }
+  h1 { font-size: clamp(38px, 4.65vw, 59px); line-height: 1.07; letter-spacing: -2.8px; font-weight: 750; margin: 20px 0; max-width: 580px; text-wrap: balance; }
+  .lead { color: var(--muted); font-size: 18px; max-width: 470px; margin: 0 0 24px; text-wrap: pretty; }
+  .free { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; color: #d7e6ed; margin-bottom: 25px; }
+  .free strong { color: var(--mint); font-weight: 650; }
+  .free span + span::before { content: "·"; margin-right: 8px; color: #6d8998; }
+  .actions { display: flex; flex-wrap: wrap; gap: 11px; }
+  .button { min-height: 52px; display: inline-flex; justify-content: center; align-items: center; gap: 13px; padding: 0 22px; border: 1px solid var(--line); border-radius: 14px; font-size: 15px; font-weight: 650; transition: background .15s, transform .15s; }
+  .button:hover { background: #ffffff0d; transform: translateY(-1px); }
+  .button.primary { background: var(--mint); color: #0e2630; border-color: var(--mint); }
+  .button.primary:hover { background: #b7f8df; }
+  .button svg { width: 17px; height: 17px; }
+  .install { font-size: 12px; color: #9caebc; max-width: 455px; margin: 15px 0 0; }
+  .world { position: relative; aspect-ratio: 1.04; min-width: 0; overflow: hidden; border: 1px solid #c0bbec1a; border-radius: 32px; background: linear-gradient(135deg, #112330ab, #231632ab); box-shadow: 0 35px 70px #0000002a; }
+  .world img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .world-label { position: absolute; bottom: 24px; left: 0; right: 0; text-align: center; font-size: 11px; color: #b5c9d7; letter-spacing: 1px; text-transform: uppercase; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; border-top: 1px solid var(--line); margin-top: 46px; padding-top: 27px; }
+  .feature { display: flex; align-items: flex-start; gap: 12px; }
+  .feature svg { width: 21px; height: 21px; flex: none; color: #b9b0da; margin-top: 3px; }
+  .feature h2 { font-size: 14px; letter-spacing: -.15px; margin: 0 0 4px; font-weight: 650; }
+  .feature p { font-size: 12px; color: #9eb0bd; margin: 0; max-width: 260px; }
+  footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding: 21px 0 30px; color: #7f96a6; font-size: 11px; }
+  footer nav { display: flex; gap: 20px; }
+  footer a:hover { color: var(--text); }
+  .invalid .eyebrow { color: #e9bea6; }
+  @media (prefers-reduced-motion: reduce) { .button { transition: none; } .button:hover { transform: none; } }
+  @media (max-width: 760px) {
+    .shell { width: calc(100% - 42px); max-width: 520px; }
+    header { padding: 23px 0 14px; }
+    .brand { font-size: 21px; }
+    .private { font-size: 11px; }
+    main { padding-top: 25px; }
+    .hero { grid-template-columns: 1fr; gap: 28px; }
+    h1 { font-size: clamp(37px, 10vw, 50px); letter-spacing: -1.8px; max-width: 440px; }
+    .lead { font-size: 16px; margin-bottom: 20px; }
+    .free { margin-bottom: 21px; font-size: 12px; }
+    .actions .button { flex: 1; padding-inline: 12px; }
+    .world { aspect-ratio: 1.7; border-radius: 24px; }
+    .world img { object-position: center 47%; }
+    .world-label { bottom: 14px; font-size: 9px; }
+    .features { margin-top: 28px; gap: 18px; padding-top: 23px; grid-template-columns: 1fr; }
+    .feature p { max-width: none; }
+    footer { font-size: 10px; }
+  }
+  @media (max-width: 350px) { .private { display: none; } .actions { flex-direction: column; } }
 </style>
 </head>
 <body>
-<h1>ChatRoom</h1>
-<p id="status">Get ChatRoom, then tap your friend’s invitation again to join.</p>
-<p><a id="download" href="https://apps.apple.com/app/id1626748939">Get ChatRoom</a></p>
+<div class="shell">
+  <header>
+    <a class="brand" href="https://kuprel.github.io/chatroom-site/" aria-label="ChatRoom home">
+      <svg class="brand-icon" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#9bf0d0"/><path d="M11 11h18v13H20l-7 6v-6h-2z" fill="none" stroke="#0e2630" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      ChatRoom
+    </a>
+    <span class="private"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V6a4 4 0 0 1 8 0v4"/></svg>Private, by invitation</span>
+  </header>
+  <main id="content">
+    <section class="hero" aria-labelledby="headline">
+      <div>
+        <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span id="context">A little more together</span></div>
+        <h1 id="headline">Your people.<br>Your own world.</h1>
+        <p class="lead" id="status">Catch up in a shared 3D world. Talk, play and make a little room for each other.</p>
+        <div class="free" aria-label="Start free with one friend for 15 minutes"><span><strong>Start free</strong></span><span>15 minutes</span><span>You + one friend</span></div>
+        <div class="actions">
+          <a id="open" class="button primary" hidden>Open ChatRoom<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></a>
+          <a id="download" class="button primary" href="https://apps.apple.com/app/id1626748939" rel="noreferrer">Get ChatRoom</a>
+        </div>
+        <p class="install" id="install">For iPhone with iOS 26+. Ages 18+.</p>
+        <noscript><p class="install">To open an invitation, enable JavaScript or tap your original link on an iPhone with ChatRoom installed. After installing, return to that same invitation.</p></noscript>
+      </div>
+      <div class="world">
+        <img src="invite-world.svg" width="570" height="630" alt="An illustrated aurora world with two voice avatars" fetchpriority="high">
+        <span class="world-label">A world of your own</span>
+      </div>
+    </section>
+    <section class="features" aria-label="What makes ChatRoom different">
+      <div class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 9v6m4-9v12m4-15v18m4-15v12m4-9v6"/></svg><div><h2>More than a message</h2><p>Direct, encrypted voice with people you choose. Both people approve before sharing.</p></div></div>
+      <div class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="7"/><ellipse cx="12" cy="12" rx="12" ry="3" transform="rotate(-28 12 12)"/></svg><div><h2>Same friends. New scenery.</h2><p>Six 3D worlds, floating reactions and free Connect Four. Make your catch-up a place.</p></div></div>
+      <div class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg><div><h2>A little company, anytime</h2><p>Meet Eve, the AI voice companion. Every device gets five free minutes to try her.</p></div></div>
+    </section>
+  </main>
+  <footer><span>ChatRoom plans: up to 4 people · up to 1 hour · chess.</span><nav aria-label="Legal links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav></footer>
+</div>
 <script>
+  // Keep the private capability in the user-clicked app link only. No analytics,
+  // automatic navigation, request submission or token-bearing preview URLs.
   const invitation = new URL(window.location.href);
   const kind = invitation.searchParams.has('friend') ? 'friend' : 'invite';
   const code = invitation.searchParams.get(kind);
+  const hasInvitation = invitation.search !== '' || invitation.href.includes('#');
   const valid = !invitation.href.includes('#') && /^[0-9a-f]{32}$/i.test(code || '') &&
     invitation.search === '?' + kind + '=' + code;
+  const open = document.getElementById('open');
+  const download = document.getElementById('download');
   if (valid) {
-    if (kind === 'friend') {
-      document.getElementById('status').textContent = 'Get ChatRoom, then tap your friend’s link again to send a friend request.';
-    }
-    window.location.replace('https://apps.apple.com/app/id1626748939');
-  } else {
-    document.getElementById('status').textContent = 'Ask your friend for a new invitation link.';
-    document.getElementById('download').hidden = true;
+    open.href = 'chatroom://' + (kind === 'friend' ? 'friend' : 'join') + '/' + code.toLowerCase();
+    open.hidden = false;
+    download.className = 'button';
+    document.getElementById('context').textContent = kind === 'friend' ? 'Private friend invitation' : 'Private room invitation';
+    document.getElementById('headline').textContent = kind === 'friend' ? 'Keep your people close.' : 'Your friend invited you in.';
+    document.getElementById('status').textContent = kind === 'friend'
+      ? 'Open the link in ChatRoom to send a friend request. You both choose to accept before becoming friends.'
+      : 'Open your invitation in ChatRoom to join a private 3D room. The app checks that the room is still available.';
+    document.getElementById('install').textContent = kind === 'friend'
+      ? 'New here? Get the app, then tap this invitation again. Friend requests need ChatRoom 1.2 or later. iPhone · iOS 26+ · 18+.'
+      : 'New here? Get the app, then tap this invitation again. iPhone · iOS 26+ · 18+.';
+  } else if (hasInvitation) {
+    document.getElementById('content').className = 'invalid';
+    document.getElementById('context').textContent = 'Let’s try that again';
+    document.getElementById('headline').textContent = 'Ask for a fresh invitation.';
+    document.getElementById('status').textContent = 'This link is incomplete or invalid. Ask your friend to share a new room or friend link from ChatRoom.';
+    document.getElementById('install').textContent = 'You can still get ChatRoom. To join your friend, use the new invitation they send. iPhone · iOS 26+ · 18+.';
   }
 </script>
 </body>
